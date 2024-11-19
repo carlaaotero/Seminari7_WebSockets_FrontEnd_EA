@@ -26,23 +26,23 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     this.listMessage();
   }
-
+  //--
   sendMessage(): void {
     if (this.message) {
-      this.messages.push({ text: this.message, type: 'sent' });;
+      this.messages.push({ message: this.message, type: 'sent', date: new Date() });;
       this.chatService.sendMessage(this.message);
       this.message = '';
-      this.scrollToBottom(); // Forzar el scroll hacia abajo
+      this.scrollToBottom(); 
 
     }
   }
-
+  //--
   listMessage(){
     this.chatService.getMessage().subscribe((data) => {
       console.log('Mensaje recibido:', data);
-      this.messages.push({ text: data, type: 'received' });
+      this.messages.push({ message: data.message, type: 'received', date: new Date() });
       console.log(data);
-      this.scrollToBottom(); // Forzar el scroll hacia abajo cuando se recibe un mensaje
+      this.scrollToBottom(); 
     });
   }
   

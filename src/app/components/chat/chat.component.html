@@ -8,8 +8,10 @@
   <!-- Contenedor de los mensajes -->
   <div class="chat-messages">
     <div *ngFor="let data of messages"[ngClass]="{'message-receive': data.type === 'received', 'message-send': data.type === 'sent'}">
-      {{ data.text }}
+      {{ data.message }} <!--he canviat això-->
+      <div class ="message-date">{{data.date | date:'short'}} </div>
     </div>
+
   </div>
 
   <!-- Barra de entrada de texto -->

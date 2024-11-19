@@ -14,8 +14,8 @@ export class ChatService {
     this.socket.emit('message', msg);
   }
 
+  //--
   getMessage() {
-    return this.socket.fromEvent<string>('message-receive');
-    
+    return this.socket.fromEvent<{ date: Date; message: string }>('message-receive');
   }
 }
